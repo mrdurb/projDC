@@ -38,7 +38,68 @@
                         </tr>
                     </tbody>
                 </table>
-                <button type="button" class="btn btn-outline-success float-right">Добавить</button>
+                <button type="button" class="btn btn-outline-success float-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Добавить</button>
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                    <form id="taskform" method="post"> 
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Добавление задачи</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                                <div class="form-group">
+                                    <div class="col-8 p-0">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Название</div>
+                                            </div>
+                                            <input type="text" class="form-control" id="writename" name="writename">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-8 p-0">
+                                        <div class="input-group mb-2 mr-sm-2 ">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Исполнитель</div>
+                                            </div>
+                                            <select class="custom-select " id="selectexecutor" name="selectexecutor">
+                                                <option>One</option>
+                                                <option>Two</option>
+                                                <option>Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-8 p-0">
+                                        <div class="input-group mb-2 mr-sm-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">Статус</div>
+                                            </div>
+                                            <select class="custom-select " id="selectstatus" name="selectstatus">
+                                                <option>Открыта</option>
+                                                <option>В работе</option>
+                                                <option>Завершена</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-start">
+                            <div class="btn-group-vertical">
+                                <input type="button" class="btn btn-outline-success" id="send" value="Сохранить" data-dismiss="modal"></input>
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Отмена</button>
+                            </div>
+                        </div>
+                    </form>    
+                    </div>
+                </div>
             </div>
             <div class="tab-pane " id="executor">
                 <div id="addexecutor">
@@ -53,6 +114,9 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <?php
+                                                                   
+                                ?>
                                 <td>1</td>
                                 <td>Mark</td>
                                 <td>Otto</td>
@@ -65,11 +129,11 @@
             </div>
         </div>
     </div>
-    
-
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous" ></script>
-    <script src="script.js"></script>
+    <script src="js_scripts/script.js"></script>
+    <script src="js_scripts/ajax_requests.js"></script>
 </body>
 </html>
