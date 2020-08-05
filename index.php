@@ -140,9 +140,11 @@
                             </tr>
                         </thead>
                         <tbody id="executorstable">
-                            <?php
-                                include('php_requests/showexecutors.php');
-                            ?>
+                            <form id="executordelete">
+                                <?php
+                                    include('php_requests/showexecutors.php');
+                                ?>
+                            </form>
                         </tbody>
                     </table>
                     <button type="button" class="btn btn-outline-success float-right" onclick="showaddexecuter()">Добавить</button>

@@ -14,12 +14,8 @@ $(document).ready(function(){
             }
         });
         
-        
     });
 });
-function modalclose(){
-    
-};
 
 $("#executorform").submit(function(e){
     e.preventDefault(e);
@@ -54,6 +50,22 @@ $("#comeback").click(function(){
     });
 
 });
+
+function executerdelete(executorid){
+    
+    var id = executorid;
+    $.ajax({
+        url:'php_requests/executerdelete.php',
+        type: 'POST',
+        data: {id: id},
+        success: function(){
+            alert(id);
+            $('#executorstable').empty();
+            $('#executorstable').html();
+        }
+    });
+
+};
 
 function clear_forms(){
 $('form').trigger('reset');
