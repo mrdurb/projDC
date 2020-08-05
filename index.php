@@ -10,21 +10,62 @@
     <div class="container mt-5">
         <ul class="nav nav-tabs ">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#description">Задачи</a>
+                <a class="nav-link active" data-toggle="tab" href="#tasks">Задачи</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#characteristics">Исполнители</a>
+                <a class="nav-link" data-toggle="tab" href="#executor">Исполнители</a>
             </li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane  show active" id="description">
-                Описание товара...
+            <div class="tab-pane  show active" id="tasks">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Название</th>
+                            <th scope="col">Исполнитель</th>
+                            <th scope="col">Статус</th>
+                            <th scope="col">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>Otto</td>
+                            <th>@mdo</th>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-outline-success float-right">Добавить</button>
             </div>
-            <div class="tab-pane " id="characteristics">
-                Характеристики товара...
+            <div class="tab-pane " id="executor">
+                <div id="addexecutor">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Имя</th>
+                                <th scope="col">Должность</th>
+                                <th scope="col">Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <th>@mdo</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-outline-success float-right" onclick="next()">Добавить</button>
+                </div>
             </div>
         </div>
     </div>
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
