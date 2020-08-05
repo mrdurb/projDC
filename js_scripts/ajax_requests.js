@@ -1,6 +1,4 @@
-$("document").ready(function(){
-
-    $("#send").click(function(){
+$("#send").click(function(){
 
         var data = $("#taskform").serialize();
         $.ajax({
@@ -8,10 +6,12 @@ $("document").ready(function(){
             type: 'POST',
             data: data,
             success: function(data){
+                $('#tabletasks').empty();
+                $('#tabletasks').html(data);
             }
         });
 
-    });
 });
+
 
 
