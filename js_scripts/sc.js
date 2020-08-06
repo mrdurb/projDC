@@ -78,6 +78,16 @@ function edittaskfunc(id, name,executor,status){
     $('#taskname').val(name);
     $('#editexecutor').val(executor);
     $('#editstatus').val(status);
+    var data = $("#taskform").serialize();
+    $.ajax({
+        url:'php_requests/reloadexecutorform.php',
+        type: 'POST',
+        data: data,
+        success: function(data){
+            $('#editexecutor').empty();
+            $('#editexecutor').html(data);
+        }
+    });
 };
 
 $("#taskformedit").submit(function(e){
@@ -98,13 +108,32 @@ $("#taskformedit").submit(function(e){
 
 });
 
-function editexecutorfunc(id, name,executor,status){
-    hidetasks();
-    $('#idhidden').val(id);
-    $('#taskname').val(name);
-    $('#editexecutor').val(executor);
-    $('#editstatus').val(status);
+function editexecutorfunc(id, name, position){
+    showeditexecuter();
+    $('#exidhidden').val(id);
+    $('#editexecutorname').val(name);
+    $('#editselectexecutor').val(position);
 };
+
+$("#executorformedit").submit(function(e){
+    e.preventDefault(e);
+    var data = $("#executorformedit").serialize();
+    $.ajax({
+        url:'php_requests/editexecuter.php',
+        type: 'POST',
+        data: data,
+        success: function(data){
+            $('#executorstable').empty();
+            $('#executorstable').html(data);
+            document.getElementById('editexecutorcomplite').style.display = 'block';
+            document.getElementById('executorform').style.display = 'none';
+            document.getElementById('complite').style.display = 'none'; 
+            document.getElementById('addexecutor').style.display = 'none';
+            document.getElementById('editexecutorform').style.display = 'none';  
+        }
+    });
+
+});
 
 myTableExecutors.addEventListener('click', function(evt){
     if(evt.target.closest('.deleteRowExecutors')){
