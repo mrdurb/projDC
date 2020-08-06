@@ -19,15 +19,55 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane  show active" id="tasks">
-                <div id="edittasks" style="display:none;">
-                    <?php
-                        include('php_requests/edittask.php');
-                    ?>
-                </div>
+                    <div id="edittasks" style="display:none;">
+                        <form id="taskformedit"  method="post">
+                            <input type="text" hidden id="idhidden" name="idhidden">
+                            <div class="form-group">
+                                <div class="col-4 p-0">
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Название</div>
+                                        </div>
+                                        <input type="text" class="form-control" id="taskname" name="taskname" required pattern="^[А-Яа-яЁё]+$">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-4 p-0">
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Исполнитель</div>
+                                        </div>
+                                        <select class="custom-select" id="editexecutor" name="editexecutor" required>
+                                            <?php include('php_requests/reloadexecutors.php'); ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-4 p-0">
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Статус</div>
+                                        </div>
+                                        <select class="custom-select " id="editstatus" name="editstatus">
+                                            <option>Открыта</option>
+                                            <option>В работе</option>
+                                            <option>Завершена</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-group-vertical">
+                                <input type="submit" form="taskformedit" class="btn btn-outline-success" id="sendtask" value="Сохранить"></input>
+                                <button type="button" class="btn btn-outline-danger" onclick="edithide()">Отмена</button>
+                            </div>
+                        </form>
+                    </div>
                 <div id="editcomplite" style="display:none;">
                     <h1>Операция выполнена</h1>
                     <p>Редактирование выполнено</p>
-                    <button type="button" class="btn btn-outline-primary"  onclick="hideaddexecuter()">Вернуться на главную</button>
+                    <button type="button" class="btn btn-outline-primary"  onclick="edithide()">Вернуться на главную</button>
                 </div>
                 <div id="showtasks">
                     <table class="table table-bordered" id="myTableTasks">
@@ -110,37 +150,79 @@
                 </div>
             </div>
             <div class="tab-pane " id="executor">
-            <form id="executorform" style="display:none;" method="post">
-                <div class="form-group">
-                    <div class="col-4 p-0">
-                        <div class="input-group mb-2 mr-sm-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">Имя</div>
+
+
+                <div id="editexecutorform" style="display:none">
+                    <form id="executorformedit">
+                    <input type="text" hidden id="exidhidden" name="exidhidden">
+                        <div class="form-group">
+                            <div class="col-4 p-0">
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Имя</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="editexecutorname" name="editexecutorname" required pattern="^[А-Яа-яЁё]+$">
+                                </div>
                             </div>
-                            <input type="text" class="form-control" id="executorname" name="executorname" required pattern="^[А-Яа-яЁё]+$">
                         </div>
+                        <div class="form-group">
+                            <div class="col-4 p-0">
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Должность</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="editselectexecutor" name="editselectexecutor" required pattern="^[А-Яа-яЁё]+$" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-group-vertical">
+                                <input type="submit" form="executorformedit" class="btn btn-outline-success" id="sendeditexecutor" value="Сохранить"></input>
+                                <button type="button" class="btn btn-outline-danger" onclick="hideaddexecuter()">Отмена</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="editexecutorcomplite">
+                    <div id="complite" style="display:none;">
+                        <h1>Операция выполнена</h1>
+                        <p>Исполнитель добавлен</p>
+                        <button type="button" class="btn btn-outline-primary"  onclick="hideaddexecuter()">Вернуться на страницу исполнителей</button>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-4 p-0">
-                        <div class="input-group mb-2 mr-sm-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">Должность</div>
+
+
+                <form id="executorform" style="display:none;" method="post">
+                    <div class="form-group">
+                        <div class="col-4 p-0">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Имя</div>
+                                </div>
+                                <input type="text" class="form-control" id="executorname" name="executorname" required pattern="^[А-Яа-яЁё]+$">
                             </div>
-                            <input type="text" class="form-control" id="selectexecutor" name="selectexecutor" required pattern="^[А-Яа-яЁё]+$" >
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="col-4 p-0">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Должность</div>
+                                </div>
+                                <input type="text" class="form-control" id="selectexecutor" name="selectexecutor" required pattern="^[А-Яа-яЁё]+$" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group-vertical">
+                        <input type="submit" form="executorform" class="btn btn-outline-success" id="sendexecutor" value="Сохранить"></input>
+                        <button type="button" class="btn btn-outline-danger" onclick="hideaddexecuter()">Отмена</button>
+                    </div>
+                </form>
+                <div id="complite" style="display:none;">
+                    <h1>Операция выполнена</h1>
+                    <p>Исполнитель добавлен</p>
+                    <button type="button" class="btn btn-outline-primary"  onclick="hideaddexecuter()">Вернуться на страницу исполнителей</button>
                 </div>
-                <div class="btn-group-vertical">
-                    <input type="submit" form="executorform" class="btn btn-outline-success" id="sendexecutor" value="Сохранить"></input>
-                    <button type="button" class="btn btn-outline-danger" onclick="hideaddexecuter()">Отмена</button>
-                </div>
-            </form>
-            <div id="complite" style="display:none;">
-                <h1>Операция выполнена</h1>
-                <p>Исполнитель добавлен</p>
-                <button type="button" class="btn btn-outline-primary"  onclick="hideaddexecuter()">Вернуться на страницу исполнителей</button>
-            </div>
+
+
                 <div id="addexecutor" style="display:block;">
                     <table class="table table-bordered" id="myTableExecutors">
                         <thead>
@@ -161,6 +243,8 @@
                     </table>
                     <button type="button" class="btn btn-outline-success float-right" onclick="showaddexecuter()">Добавить</button>
                 </div>
+
+
             </div>
         </div>
     </div>

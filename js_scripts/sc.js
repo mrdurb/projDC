@@ -10,7 +10,6 @@ $(document).ready(function(){
                 $('#exampleModal').modal('hide');  
                 $('#tabletasks').empty();
                 $('#tabletasks').html(data);
-                
             }
         });
         
@@ -45,7 +44,6 @@ $("#reloadexecutors").click(function(){
         success: function(data){
             $('#selecttask').empty();
             $('#selecttask').html(data);
-            
         }
     });
 
@@ -57,8 +55,7 @@ function executerdelete(executorid){
         url:'php_requests/executerdelete.php',
         type: 'POST',
         data: {id: executorid},
-        success: function(){
-            
+        success: function(){  
         }
     });
 
@@ -75,12 +72,19 @@ function taskdelete(taskid){
     });
 
 };
+function edittaskfunc(id, name,executor,status){
+    hidetasks();
+    $('#idhidden').val(id);
+    $('#taskname').val(name);
+    $('#editexecutor').val(executor);
+    $('#editstatus').val(status);
+};
 
 $("#taskformedit").submit(function(e){
     e.preventDefault(e);
     var data = $("#taskformedit").serialize();
     $.ajax({
-        url:'php_requests/addexecutor.php',
+        url:'php_requests/edittask.php',
         type: 'POST',
         data: data,
         success: function(data){
@@ -93,18 +97,14 @@ $("#taskformedit").submit(function(e){
     });
 
 });
-function edittaskfunc(idtask){
-    $.ajax({
-        url:'php_requests/edittask.php',
-        type: 'POST',
-        data: {id: idtask},
-        success: function(){
-            hidetasks();
-            alert(idtask);
-        }
-    });
-};
 
+function editexecutorfunc(id, name,executor,status){
+    hidetasks();
+    $('#idhidden').val(id);
+    $('#taskname').val(name);
+    $('#editexecutor').val(executor);
+    $('#editstatus').val(status);
+};
 
 myTableExecutors.addEventListener('click', function(evt){
     if(evt.target.closest('.deleteRowExecutors')){
@@ -124,16 +124,30 @@ function clear_forms(){
 function showaddexecuter() {
     document.getElementById('executorform').style.display = 'block';
     document.getElementById('complite').style.display = 'none'; 
-    document.getElementById('addexecutor').style.display = 'none'; 
+    document.getElementById('addexecutor').style.display = 'none';
+    document.getElementById('editexecutorform').style.display = 'none';  
 }
 function hideaddexecuter() {
     clear_forms();
     document.getElementById('executorform').style.display = 'none';
     document.getElementById('complite').style.display = 'none'; 
-    document.getElementById('addexecutor').style.display = 'block'; 
+    document.getElementById('addexecutor').style.display = 'block';
+    document.getElementById('editexecutorform').style.display = 'none';
+    document.getElementById('editexecutorcomplite').style.display = 'none';  
+}
+function showeditexecuter() {
+    document.getElementById('executorform').style.display = 'none';
+    document.getElementById('complite').style.display = 'none'; 
+    document.getElementById('addexecutor').style.display = 'none';
+    document.getElementById('editexecutorform').style.display = 'block';  
+}
+function hideeditexecuter() {
+    document.getElementById('executorform').style.display = 'block';
+    document.getElementById('complite').style.display = 'none'; 
+    document.getElementById('addexecutor').style.display = 'none';
+    document.getElementById('editexecutorform').style.display = 'none';  
 }
 function hidetasks() {
-    clear_forms();
     document.getElementById('showtasks').style.display = 'none';
     document.getElementById('editcomplite').style.display = 'none'; 
     document.getElementById('edittasks').style.display = 'block'; 
