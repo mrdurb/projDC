@@ -74,6 +74,7 @@ function taskdelete(taskid){
 };
 function edittaskfunc(id, name,executor,status){
     hidetasks();
+    alert('Дарова');
     $('#idhidden').val(id);
     $('#taskname').val(name);
     $('#editexecutor').val(executor);
