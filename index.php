@@ -39,7 +39,6 @@
                                             <div class="input-group-text">Исполнитель</div>
                                         </div>
                                         <select class="custom-select" id="editexecutor" name="editexecutor" required>
-                                            <?php include('php_requests/reloadexecutors.php'); ?>
                                         </select>
                                     </div>
                                 </div>
@@ -117,9 +116,6 @@
                                                 <div class="input-group-text">Исполнитель</div>
                                             </div>
                                             <select class="custom-select" id="selecttask" name="selecttask" required>
-                                                <?php
-                                                    include('php_requests/reloadexecutors.php');
-                                                ?>
                                             </select>
                                         </div>
                                     </div>
@@ -154,7 +150,7 @@
 
                 <div id="editexecutorform" style="display:none">
                     <form id="executorformedit">
-                    <input type="text" hidden id="exidhidden" name="exidhidden">
+                        <input type="text" hidden id="exidhidden" name="exidhidden">
                         <div class="form-group">
                             <div class="col-4 p-0">
                                 <div class="input-group mb-2 mr-sm-2">
@@ -181,12 +177,10 @@
                         </div>
                     </form>
                 </div>
-                <div id="editexecutorcomplite">
-                    <div id="complite" style="display:none;">
-                        <h1>Операция выполнена</h1>
-                        <p>Исполнитель добавлен</p>
-                        <button type="button" class="btn btn-outline-primary"  onclick="hideaddexecuter()">Вернуться на страницу исполнителей</button>
-                    </div>
+                <div id="editexecutorcomplite" style="display:none;">
+                     <h1>Операция выполнена</h1>
+                    <p>Исполнитель изменен</p>
+                    <button type="button" class="btn btn-outline-primary"  onclick="hideaddexecuter()">Вернуться на страницу исполнителей</button>
                 </div>
 
 
