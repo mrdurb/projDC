@@ -8,7 +8,7 @@ while(($executor= $result->fetch_assoc()) != FALSE){
             <td>'.$executor['id'].'</td>
             <td>'.$executor['name'].'</td>
             <td>'.$executor['position'].'</td>
-            <td><button type="button" id="delete" onclick = executerdelete('.$executor['id'].') class="btn btn-light btn-sm">Удалить</button><button type="button" class="btn btn-light btn-sm">Редактировать</button></td>
+            <td><button type="button" id="delete" class="btn btn-light btn-sm deleteRowExecutors" onclick = executerdelete('.$executor['id'].')>Удалить</button><button type="button" class="btn btn-light btn-sm">Редактировать</button></td>
         </tr>';
 }
 ?>

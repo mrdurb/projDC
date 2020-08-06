@@ -59,9 +59,7 @@ function executerdelete(executorid){
         type: 'POST',
         data: {id: id},
         success: function(){
-            alert(id);
-            $('#executorstable').empty();
-            $('#executorstable').html();
+            alert(JSON.parse(executerdelete));
         }
     });
 

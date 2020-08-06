@@ -19,23 +19,35 @@
         </ul>
         <div class="tab-content">
             <div class="tab-pane  show active" id="tasks">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">Название</th>
-                            <th scope="col">Исполнитель</th>
-                            <th scope="col">Статус</th>
-                            <th scope="col">Действия</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabletasks">
-                            <?php
-                                include('php_requests/showtasks.php');
-                            ?>
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-outline-success float-right" data-toggle="modal" data-target="#exampleModal" onclick="clear_forms()">Добавить</button>
+                <div id="edittasks" style="display:none;">
+                    <?php
+                        include('php_requests/edittask.php');
+                    ?>
+                </div>
+                <div id="editcomplite" style="display:none;">
+                    <h1>Операция выполнена</h1>
+                    <p>Редактирование выполнено</p>
+                    <button type="button" class="btn btn-outline-primary"  onclick="hideaddexecuter()">Вернуться на главную</button>
+                </div>
+                <div id="showtasks">
+                    <table class="table table-bordered" id="myTableTasks">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Название</th>
+                                <th scope="col">Исполнитель</th>
+                                <th scope="col">Статус</th>
+                                <th scope="col">Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabletasks">
+                                <?php
+                                    include('php_requests/showtasks.php');
+                                ?>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-outline-success float-right" id="reloadexecutors" data-toggle="modal" data-target="#exampleModal" onclick="clear_forms()">Добавить</button>
+                </div>
             </div>
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -64,7 +76,7 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">Исполнитель</div>
                                             </div>
-                                            <select class="custom-select" id="selectexecutor" name="selectexecutor" required>
+                                            <select class="custom-select" id="selecttask" name="selecttask" required>
                                                 <?php
                                                     include('php_requests/reloadexecutors.php');
                                                 ?>
@@ -127,10 +139,10 @@
             <div id="complite" style="display:none;">
                 <h1>Операция выполнена</h1>
                 <p>Исполнитель добавлен</p>
-                <button type="button" class="btn btn-outline-primary" id="comeback" onclick="hideaddexecuter()">Вернуться на страницу исполнителей</button>
+                <button type="button" class="btn btn-outline-primary"  onclick="hideaddexecuter()">Вернуться на страницу исполнителей</button>
             </div>
                 <div id="addexecutor" style="display:block;">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="myTableExecutors">
                         <thead>
                             <tr>
                                 <th scope="col">id</th>
@@ -156,6 +168,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous" ></script>
-    <script src="js_scripts/script.js"></script>
+    <script src="js_scripts/sc.js"></script>
 </body>
 </html>
